@@ -18,15 +18,6 @@ export const resolvers = {
     repositoriesList: async (parent: object, { accessToken }: { accessToken: string }) => {
       return getGithubRepositories(accessToken);
     },
-    // repositoryDetails: async (parent: object, args: GetRepositoryDetailsArguments) => {
-    //   await new Promise((resolve) => {
-    //     setTimeout(resolve, 10000);
-    //   });
-    //   return {
-    //     ...args,
-    //     ...(await getRepositoryDetails(args.accessToken, args.owner, args.repositoryName)),
-    //   };
-    // },
     repositoryDetails: limit(async (parent: object, args: GetRepositoryDetailsArguments) => {
       return {
         ...args,
